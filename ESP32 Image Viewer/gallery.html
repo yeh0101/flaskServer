@@ -1,0 +1,28 @@
+# create file: gallery.html
+# place this inside a folder named templates in the same directory
+# templates/gallery.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Gallery</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; text-align: center; }
+        h1 { margin-top: 20px; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; }
+        .photo { margin: 10px; padding: 10px; background: #fff; border: 1px solid #ccc; }
+        img { max-width: 300px; height: auto; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Captured Images</h1>
+    <div class="gallery">
+        {% for image in images %}
+        <div class="photo">
+            <img src="{{ url_for('uploaded_file', filename=image) }}" alt="{{ image }}">
+            <p>{{ image }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
